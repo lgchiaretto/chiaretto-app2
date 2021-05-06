@@ -43,7 +43,7 @@ spec:
             secretKeyRef:
               key: APP_SECRET
               name: chiaretto-app2-secret
-        image: "quay.io/chiaretto/chiaretto-app2:{{ .Values.version }}"
+        image: "quay.io/chiaretto/chiaretto-app:{{ .Values.version }}"
         imagePullPolicy: Always
         name: chiaretto-app2
         ports:
