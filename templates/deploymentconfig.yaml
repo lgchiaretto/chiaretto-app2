@@ -1,0 +1,68 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: chiaretto-app2
+    app.kubernetes.io/component: chiaretto-app2
+    app.kubernetes.io/instance: chiaretto-app2
+  name: chiaretto-app2
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    deploymentconfig: chiaretto-app2
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        deploymentconfig: chiaretto-app2
+    spec:
+      containers:
+      - env:
+        - name: APP_VERSION
+          valueFrom:
+            configMapKeyRef:
+              key: APP_VERSION
+              name: chiaretto-app2-version
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              key: APP_ENV
+              name: chiaretto-app2-environment
+        - name: APP_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: APP_SECRET
+              name: chiaretto-app2-secret
+        image: "quay.io/chiaretto/chiaretto-app2:{{ .Values.version }}"
+        imagePullPolicy: Always
+        name: chiaretto-app2
+        ports:
+        - containerPort: 8081
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - type: ConfigChange
