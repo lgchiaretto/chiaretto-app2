@@ -5,7 +5,7 @@ metadata:
     app: chiaretto-app2
     app.kubernetes.io/component: chiaretto-app2
     app.kubernetes.io/instance: chiaretto-app2
-  name: chiaretto-https
+  name: chiaretto-https2
 spec:
   host: "{{ .Values.route }}"
   port:
