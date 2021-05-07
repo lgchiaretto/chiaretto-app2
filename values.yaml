@@ -24,7 +24,7 @@ mongodb:
     enabled: false
     fsGroup: ''
   metrics:
-    enabled: true
+    enabled: false
     serviceMonitor:
       enabled: false
 
