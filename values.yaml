@@ -17,14 +17,14 @@ mongodb:
     password: password@123
     database: webris
   containerSecurityContext:
-    enabled: false
+    enabled: true
     runAsUser: ''
     runAsNonRoot: true
   podSecurityContext:
-    enabled: false
+    enabled: true
     fsGroup: ''
   metrics:
-    enabled: false
+    enabled: true
     serviceMonitor:
       enabled: false
 
