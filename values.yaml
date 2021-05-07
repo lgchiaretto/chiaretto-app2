@@ -10,7 +10,7 @@ mongodb:
       mongo -u $MONGODB_USERNAME -p $MONGODB_PASSWORD --eval 'db.initdb.insert({"init": "true"})' $MONGODB_DATABASE
   persistence:
     enabled: true
-    existingClaim: mongodb
+    existingClaim: mongo
   auth:
     enabled: true
     username: webrisapp
