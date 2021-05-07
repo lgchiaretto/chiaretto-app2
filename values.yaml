@@ -2,6 +2,7 @@ version: '1.0'
 route: chiaretto2.apps.ocp4kvm.chiaret.to
 env: default
 mongodb:
+  host: chiaretto-app2-mongodb:27017
   persistence:
     existingClaim: mongodb
   auth:
