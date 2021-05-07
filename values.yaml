@@ -21,7 +21,7 @@ mongodb:
     runAsUser: 1000840000
     runAsNonRoot: true
   podSecurityContext:
-    enabled: true
+    enabled: false
     fsGroup: ''
   metrics:
     enabled: true
