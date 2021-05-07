@@ -3,6 +3,8 @@ route: chiaretto2.apps.ocp4kvm.chiaret.to
 env: default
 mongodb:
   name: mongodb
+  image:
+    debug: true
   initdbScripts:
     initdb.sh: |
       #!/bin/bash
