@@ -18,7 +18,7 @@ mongodb:
     database: webris
   containerSecurityContext:
     enabled: true
-    runAsUser: ''
+    runAsUser: 1000840000
     runAsNonRoot: true
   podSecurityContext:
     enabled: true
