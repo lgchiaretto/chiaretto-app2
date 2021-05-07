@@ -26,8 +26,5 @@ mongodb:
   metrics:
     enabled: true
     serviceMonitor:
-      enabled: true
-      namespace: *monitoringNamespace
-      interval: 30s
-      additionalLabels:
-        k8s-app: *promLnK8s
+      enabled: false
+
