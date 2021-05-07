@@ -16,3 +16,18 @@ mongodb:
     username: webrisapp
     password: password@123
     database: webris
+  containerSecurityContext:
+    enabled: false
+    runAsUser: ''
+    runAsNonRoot: true
+  podSecurityContext:
+    enabled: false
+    fsGroup: ''
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: *monitoringNamespace
+      interval: 30s
+      additionalLabels:
+        k8s-app: *promLnK8s
