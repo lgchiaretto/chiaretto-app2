@@ -14,8 +14,8 @@ mongodb:
   auth:
     enabled: true
     username: webrisapp
-    password: password@123
     database: webris
+    existingSecret: mongodb-secret
   containerSecurityContext:
     enabled: true
     runAsUser: 1000580000
