@@ -2,9 +2,16 @@ version: '1.0'
 route: chiaretto2.apps.ocp4kvm.chiaret.to
 env: default
 mongodb:
+  name: mongodb
+  initdbScripts:
+    initdb.sh: |
+      #!/bin/bash
+      mongo -u $MONGODB_USERNAME -p $MONGODB_PASSWORD --eval 'db.initdb.insert({"init": "true"})' $MONGODB_DATABASE
   persistence:
+    enabled: true
     existingClaim: mongodb
   auth:
-    username: mongouser
+    enabled: true
+    username: webrisapp
     password: password@123
-    database: database
+    database: webris
